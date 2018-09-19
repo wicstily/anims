@@ -1,0 +1,47 @@
+body::-webkit-scrollbar {
+  width: 0
+}
+
+.center {
+  text-align: center
+}
+
+.imp {
+  color: #1EAEDB
+}
+
+pre {
+  text-align: left;
+}
+
+.a-start {
+  display: inline-block;
+  max-width: 512px;
+  
+  animation: spin 7s linear infinite;
+}
+
+@keyframes spin {
+  from { transform:rotate(0deg) }
+  to { transform:rotate(360deg) }
+}
+
+#btn {
+  transition-property: background-color;
+  transition-duration: 1.5s;
+}
+
+.hidden {
+  height: 0px;
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  height: 100%;
+}
+
+.scroll {
+  height: 1000px;
+}

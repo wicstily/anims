@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Анимации</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="center">
+        <h2>Анимации</h2>
+    
+        <p>Я подразделяю анимации на два вида: запускающиеся сразу и запускающиеся с каким-то эвентом</p>
+    
+        <hr>
+    
+        <h3>Пример запускающихся сразу</h3>
+    
+        <!-- <div class="a-start"></div> -->
+
+        <img src="logo.png" alt="logo" width="100%" height="100%" class="a-start">
+    
+        <p>Такие анимации создаются с помощью css</p>
+    
+        <h4>Вот код этого примера: </h4>
+        <pre>
+          <code>
+.a-start {  
+  animation: spin 7s linear infinite;
+}
+
+@keyframes spin {
+  from { transform:rotate(0deg) }
+  to { transform:rotate(360deg) }
+}
+          </code>
+        </pre>
+
+        <p>То есть, создаётся элемент с шириной и высотой, в css ему прописывается свойство <span class="imp">Animation</span>, указывается имя анимации (<span class="imp">spin</span>), время выполнения в секундах или миллисекундах (<span class="imp">7s</span>), функция выполнения (<span class="imp">linear</span>), количество проходов анимации (<span class="imp">infinite</span>).</p>
+
+        <p>Далее прописывается правило <span class="imp">@keyframes</span>, в котором указывается то, что будет анимировано. В моём случае это просто вращение, поэтому там прописаны лишь свойства, вращающие элемент. Здесь можно указывать или два ключевых слова <span class="imp">from to</span> и прописывать анимацию в них, или указывать процентами от 0% до 100%.</p>
+
+        <p><a target="/" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Animations/Ispolzovanie_CSS_animatciy">Здесь</a>  можно почитать поподробнее</p>
+
+        <hr>
+
+        <h3>Примеры запуска по эвенту</h3>
+
+        <button id="btn" class="button-primary">Хочу стать чёрной</button>
+
+        <button id="btn2" class="button-primary">А я хочу открыть сркытый текст</button>
+
+        <p class="hidden">Привет, я скрытый текст. А ещё во мне есть вот это: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officia facilis blanditiis architecto quod incidunt reprehenderit asperiores necessitatibus explicabo dicta, ea ad cumque harum nulla voluptatem accusamus quas culpa fugit!</p>
+
+        <p>Это делается с помощью js и может быть сделано двумя способами: прописыванием стилей и добавлением класса. Оба примера есть выше.</p>
+
+        <div class="row">
+          <div class="six columns">
+            <p>Первый</p>
+            <pre>
+css:
+<code>
+#btn {
+  transition-property: background-color;
+  transition-duration: 1.5s;
+}
+</code>
+js:
+<code>
+let btn = document.querySelector('#btn')
+
+btn.addEventListener('click', () => {
+  btn.style.backgroundColor = 'black'
+})
+</code>
+            </pre>
+          </div>
+          <div class="six columns">
+            <p>Второй</p>
+
+            <pre>
+css:
+<code>
+.hidden {
+  height: 0px;
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  height: 100px;
+}
+</code>
+js:
+<code>
+let btn2 = document.querySelector('#btn2')
+
+btn2.addEventListener('click', () => {
+  hp.classList.add('show')
+})
+</code>
+            </pre>
+          </div>
+        </div>
+
+        <p>В первом случае мы добавляем элементу свойство <span class="imp">transition</span> для цвета фона и меняем цвет с помощью скрипта</p>
+
+        <p>Во втором же мы создаём отдельный класс <span class="imp">show</span> и добавляем его к элементу при нажатии кнопки</p>
+
+        <h5><i>Стили</i> создания анимации можно смешивать между собой. Например, можно создать класс, у которого прописана анимация с помощью <span class="imp">@keyframes</span> и добавлять этот класс по нажатию кнопки.</h5>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
